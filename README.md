@@ -30,7 +30,20 @@ cd backend
 
 docker-compose up
 
-docker-compose exec web python manage.py createsuperuser
+Соберем статику
+docker-compose exec web python manage.py collectstatic --noinput
+
+Создадим суперюзера например
+docker-compose exec web python manage.py shell
+
+Вводим построчно
+from django.contrib.auth import get_user_model
+User = get_user_model()
+user = User.objects.get(username='admin')
+user.set_password('mypassword')  # Задай нужный тебе пароль
+user.save()
+После этого выходи из shell:
+exit()
 
 Получение токена по http://127.0.0.1:8000/api/token/
 
