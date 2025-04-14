@@ -20,6 +20,8 @@ git clone https://github.com/yourname/reward-platform.git
 
 cd reward_platform
 
+Переименуйте .env.example в .env
+
 py -3.9 -m venv venv
 
 source venv/Scripts/activate
